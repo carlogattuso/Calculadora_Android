@@ -16,7 +16,7 @@
     <string name="division">/</string>
     <string name="borrar">C</string>
     <string name="igual">=</string>
-    <string name="input_text_number">Introduce los numeros</string>
+    <string name="input_text_number"></string>
     <string name="seno">sen</string>
     <string name="coseno">cos</string>
     <string name="tan">tan</string>
