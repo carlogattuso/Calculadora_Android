@@ -2,6 +2,7 @@ package com.example.calculadora_android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         final Button boton_borrar = findViewById(R.id.boton_borrar);
         final Button boton_division = findViewById(R.id.boton_division);
         final Button boton_punto = findViewById(R.id.boton_punto);
+        final Button boton_seno = findViewById(R.id.boton_seno);
+        final Button boton_coseno = findViewById(R.id.boton_coseno);
+        final Button boton_tangente = findViewById(R.id.boton_tangente);
+
 
         boton1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -269,24 +274,109 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        boton_seno.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                if(pantalla.getText().toString()== null || pantalla.getText().toString()==""){
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Función no valida, introduzca números",
+                            Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast1.show();
+                }
+                else{
+                    if(operation=="idle"){
+                        //cogemos el valor en la pantalla y hacemos el seno
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Hacemos seno",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                    else    {
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "No hacemos seno",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                }
+            }
+        });
+
+        boton_coseno.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                if(pantalla.getText().toString()== null || pantalla.getText().toString()==""){
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Función no valida, introduzca números",
+                            Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast1.show();
+                }
+                else{
+                    if(operation=="idle"){
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Hacemos coseno",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                    else    {
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "No hacemos coseno",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                }
+            }
+        });
+
+        boton_tangente.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                if(pantalla.getText().toString()== null || pantalla.getText().toString()==""){
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Función no valida, introduzca números",
+                            Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast1.show();
+                }
+                else{
+                    if(operation=="idle"){
+                        //cogemos el valor en la pantalla y hacemos el seno
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Hacemos tangente",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                    else    {
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "No hacemos tangente",
+                                Toast.LENGTH_SHORT);
+                        toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                        toast1.show();
+                    }
+                }
+            }
+        });
+
         boton_punto.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if (iniciar_operacion) {
-                    operation = "idle";
-                    borrar_pantalla = false;
+                if(pantalla.getText().toString()== null || pantalla.getText().toString()==""){
+
                     pantalla.setText("0.");
-                    iniciar_operacion = false;
                 }
                 else {
-                    if (borrar_pantalla) {
-                        pantalla.setText("");
-                        pantalla.setText("0,");
-                        ope1 = resultado;
+
+                    if (iniciar_operacion) {
+                        operation = "idle";
                         borrar_pantalla = false;
-                    }
-                    else {
-                        pantalla.setText(pantalla.getText().toString() + ".");
+                        pantalla.setText("0.");
+                        iniciar_operacion = false;
+                    } else {
+                        if (borrar_pantalla) {
+                            pantalla.setText("");
+                            pantalla.setText("0,");
+                            ope1 = resultado;
+                            borrar_pantalla = false;
+                        } else {
+                            pantalla.setText(pantalla.getText().toString() + ".");
+                        }
                     }
                 }
             }
@@ -297,9 +387,12 @@ public class MainActivity extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 operation = "idle";
                 borrar_pantalla = false;
+                iniciar_operacion = false;
                 pantalla.setText("");
             }
         });
+
+
 
         boton_igual.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -317,8 +410,7 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(Double.toString(resultado));
                     }
                 }
-
-                if(operation == "producto"){
+                else if(operation == "producto"){
                     if(!borrar_pantalla){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1*ope2;
@@ -329,8 +421,7 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(Double.toString(resultado));
                     }
                 }
-
-                if(operation == "resta"){
+                else if(operation == "resta"){
                     if(!borrar_pantalla){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1-ope2;
@@ -341,8 +432,7 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(Double.toString(resultado));
                     }
                 }
-
-                if(operation == "division"){
+                else if(operation == "division"){
                     if(!borrar_pantalla){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1/ope2;
@@ -353,9 +443,11 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(Double.toString(resultado));
                     }
                 }
-
-                if(operation == "idle"){
-                    pantalla.setText(Double.toString(resultado));
+                else {
+                    Toast toast1 = Toast.makeText(getApplicationContext(), "Faltan parámetros o ya has realizado una operacion. Realiza otra operacion para continuar",
+                            Toast.LENGTH_SHORT);
+                    toast1.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    toast1.show();
                 }
             }
         });
@@ -378,21 +470,21 @@ public class MainActivity extends AppCompatActivity {
                         borrar_pantalla = true;
                         operation = "suma";
                     }
-                    if (operation == "producto"){
+                    else if (operation == "producto"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "suma";
                     }
-                    if (operation == "division"){
+                    else if (operation == "division"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 / ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "suma";
                     }
-                    if (operation == "suma"){
+                    else {
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 + ope2;
                         pantalla.setText(Double.toString(resultado));
@@ -420,21 +512,21 @@ public class MainActivity extends AppCompatActivity {
                         borrar_pantalla = true;
                         operation = "resta";
                     }
-                    if (operation == "producto"){
+                    else if (operation == "producto"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "resta";
                     }
-                    if (operation == "division"){
+                    else if (operation == "division"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 / ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "resta";
                     }
-                    if (operation == "resta"){
+                    else {
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
                         pantalla.setText(Double.toString(resultado));
@@ -462,21 +554,21 @@ public class MainActivity extends AppCompatActivity {
                         borrar_pantalla = true;
                         operation = "producto";
                     }
-                    if (operation == "resta"){
+                    else if (operation == "resta"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "producto";
                     }
-                    if (operation == "division"){
+                    else if (operation == "division"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 / ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "producto";
                     }
-                    if (operation == "producto"){
+                    else {
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
                         pantalla.setText(Double.toString(resultado));
@@ -504,21 +596,21 @@ public class MainActivity extends AppCompatActivity {
                         borrar_pantalla = true;
                         operation = "division";
                     }
-                    if (operation == "resta"){
+                    else if (operation == "resta"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "division";
                     }
-                    if (operation == "producto"){
+                    else if (operation == "producto"){
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
                         pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "division";
                     }
-                    if (operation == "division"){
+                    else {
                         ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 / ope2;
                         pantalla.setText(Double.toString(resultado));
