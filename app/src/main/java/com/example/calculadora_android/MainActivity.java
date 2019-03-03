@@ -7,15 +7,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     /*ArrayList<String> cars = new ArrayList<String>();*/
-    int ope1;
-    int ope2;
-    int resultado;
+    double ope1;
+    double ope2;
+    double resultado;
     String operation = "idle";
     boolean borrar_pantalla = false;
-    boolean realizar_operacion = true;
+    boolean iniciar_operacion = false;
+    DecimalFormat decimales = new DecimalFormat("#.000");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +39,30 @@ public class MainActivity extends AppCompatActivity {
         final Button boton_igual = findViewById(R.id.boton_igual);
         final Button boton_suma = findViewById(R.id.boton_suma);
         final Button boton_resta = findViewById(R.id.boton_resta);
-        final Button boton_prodcuto = findViewById(R.id.boton_producto);
+        final Button boton_producto = findViewById(R.id.boton_producto);
+        final Button boton_borrar = findViewById(R.id.boton_borrar);
+        final Button boton_division = findViewById(R.id.boton_division);
+        final Button boton_punto = findViewById(R.id.boton_punto);
 
         boton1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton1.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton1.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton1.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton1.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + boton1.getText().toString());
+                    }
                 }
             }
         });
@@ -56,13 +70,22 @@ public class MainActivity extends AppCompatActivity {
         boton2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if (borrar_pantalla) {
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton2.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
-                } else {
-                    pantalla.setText(pantalla.getText().toString() + boton2.getText().toString());
+                    pantalla.setText(boton2.getText().toString());
+                    iniciar_operacion = false;
+                }
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton2.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + boton2.getText().toString());
+                    }
                 }
             }
         });
@@ -70,14 +93,22 @@ public class MainActivity extends AppCompatActivity {
         boton3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton3.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton3.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton3.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton3.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + boton3.getText().toString());
+                    }
                 }
             }
         });
@@ -85,14 +116,22 @@ public class MainActivity extends AppCompatActivity {
         boton4.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton4.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton4.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton4.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton4.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + boton4.getText().toString());
+                    }
                 }
             }
         });
@@ -100,14 +139,21 @@ public class MainActivity extends AppCompatActivity {
         boton5.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton5.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    } else {
+                        pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
+                    }
                 }
             }
         });
@@ -115,14 +161,21 @@ public class MainActivity extends AppCompatActivity {
         boton6.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton6.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    } else {
+                        pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
+                    }
                 }
             }
         });
@@ -130,14 +183,21 @@ public class MainActivity extends AppCompatActivity {
         boton7.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton7.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    } else {
+                        pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
+                    }
                 }
             }
         });
@@ -145,14 +205,21 @@ public class MainActivity extends AppCompatActivity {
         boton8.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton8.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    } else {
+                        pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
+                    }
                 }
             }
         });
@@ -160,14 +227,21 @@ public class MainActivity extends AppCompatActivity {
         boton9.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton9.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    } else {
+                        pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
+                    }
                 }
             }
         });
@@ -175,59 +249,113 @@ public class MainActivity extends AppCompatActivity {
         boton0.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                if(borrar_pantalla){
-                    pantalla.setText("");
-                    pantalla.setText(pantalla.getText().toString() + boton0.getText().toString());
-                    ope1 = resultado;
+                if (iniciar_operacion) {
+                    operation = "idle";
                     borrar_pantalla = false;
+                    pantalla.setText(boton0.getText().toString());
+                    iniciar_operacion = false;
                 }
-                else{
-                    pantalla.setText(pantalla.getText().toString() + boton0.getText().toString());
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText(pantalla.getText().toString() + boton0.getText().toString());
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + boton0.getText().toString());
+                    }
                 }
+            }
+        });
+
+        boton_punto.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                if (iniciar_operacion) {
+                    operation = "idle";
+                    borrar_pantalla = false;
+                    pantalla.setText("0.");
+                    iniciar_operacion = false;
+                }
+                else {
+                    if (borrar_pantalla) {
+                        pantalla.setText("");
+                        pantalla.setText("0,");
+                        ope1 = resultado;
+                        borrar_pantalla = false;
+                    }
+                    else {
+                        pantalla.setText(pantalla.getText().toString() + ".");
+                    }
+                }
+            }
+        });
+
+        boton_borrar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                operation = "idle";
+                borrar_pantalla = false;
+                pantalla.setText("");
             }
         });
 
         boton_igual.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                iniciar_operacion = true;
 
                 if(operation == "suma"){
                     if(!borrar_pantalla){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1+ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         operation = "idle";
                     }
                     else{
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                     }
                 }
 
                 if(operation == "producto"){
                     if(!borrar_pantalla){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1*ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         operation = "idle";
                     }
                     else{
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                     }
                 }
 
                 if(operation == "resta"){
                     if(!borrar_pantalla){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1-ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         operation = "idle";
                     }
                     else{
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                     }
                 }
+
+                if(operation == "division"){
+                    if(!borrar_pantalla){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1/ope2;
+                        pantalla.setText(Double.toString(resultado));
+                        operation = "idle";
+                    }
+                    else{
+                        pantalla.setText(Double.toString(resultado));
+                    }
+                }
+
                 if(operation == "idle"){
-                    pantalla.setText(Integer.toString(resultado));
+                    pantalla.setText(Double.toString(resultado));
                 }
             }
         });
@@ -235,30 +363,39 @@ public class MainActivity extends AppCompatActivity {
         boton_suma.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                iniciar_operacion=false;
+
                 if (operation == "idle"){
                     operation = "suma";
-                    ope1 = Integer.parseInt(pantalla.getText().toString());
+                    ope1 = Double.parseDouble(pantalla.getText().toString());
                     pantalla.setText("");
                 }
                 else{
                     if (operation == "resta"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "suma";
                     }
                     if (operation == "producto"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "suma";
+                    }
+                    if (operation == "division"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 / ope2;
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "suma";
                     }
                     if (operation == "suma"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 + ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                     }
                 }
@@ -268,63 +405,123 @@ public class MainActivity extends AppCompatActivity {
         boton_resta.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                iniciar_operacion=false;
+
                 if (operation == "idle"){
                     operation = "resta";
-                    ope1 = Integer.parseInt(pantalla.getText().toString());
+                    ope1 = Double.parseDouble(pantalla.getText().toString());
                     pantalla.setText("");
                 }
                 else {
                     if (operation == "suma"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 + ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "resta";
                     }
                     if (operation == "producto"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "resta";
+                    }
+                    if (operation == "division"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 / ope2;
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "resta";
                     }
                     if (operation == "resta"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                     }
                 }
             }
         });
 
-        boton_prodcuto.setOnClickListener(new View.OnClickListener(){
+        boton_producto.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                iniciar_operacion = false;
+
                 if (operation == "idle"){
                     operation = "producto";
-                    ope1 = Integer.parseInt(pantalla.getText().toString());
+                    ope1 = Double.parseDouble(pantalla.getText().toString());
                     pantalla.setText("");
                 }
                 else {
                     if (operation == "suma"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 + ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "producto";
                     }
                     if (operation == "resta"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 - ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "producto";
+                    }
+                    if (operation == "division"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 / ope2;
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                         operation = "producto";
                     }
                     if (operation == "producto"){
-                        ope2 = Integer.parseInt(pantalla.getText().toString());
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = ope1 * ope2;
-                        pantalla.setText(Integer.toString(resultado));
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                    }
+                }
+            }
+        });
+
+        boton_division.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                iniciar_operacion = false;
+
+                if (operation == "idle"){
+                    operation = "division";
+                    ope1 = Double.parseDouble(pantalla.getText().toString());
+                    pantalla.setText("");
+                }
+                else {
+                    if (operation == "suma"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 + ope2;
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "division";
+                    }
+                    if (operation == "resta"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 - ope2;
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "division";
+                    }
+                    if (operation == "producto"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 * ope2;
+                        pantalla.setText(Double.toString(resultado));
+                        borrar_pantalla = true;
+                        operation = "division";
+                    }
+                    if (operation == "division"){
+                        ope2 = Double.parseDouble(pantalla.getText().toString());
+                        resultado = ope1 / ope2;
+                        pantalla.setText(Double.toString(resultado));
                         borrar_pantalla = true;
                     }
                 }

@@ -20,4 +20,5 @@
     <string name="seno">sen</string>
     <string name="coseno">cos</string>
     <string name="tan">tan</string>
+    <string name="punto">.</string>
 </resources>
