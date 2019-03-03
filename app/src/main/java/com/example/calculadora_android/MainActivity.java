@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton1.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     }
                     else {
@@ -100,8 +100,9 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton2.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
+
                         seno_activado = false;
                     }
                     else {
@@ -129,8 +130,9 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton3.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
+
                         seno_activado = false;
                     }
                     else {
@@ -158,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton4.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     }
                     else {
@@ -187,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     } else {
                         pantalla.setText(pantalla.getText().toString() + boton5.getText().toString());
@@ -215,8 +217,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     } else {
                         pantalla.setText(pantalla.getText().toString() + boton6.getText().toString());
@@ -243,8 +245,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     } else {
                         pantalla.setText(pantalla.getText().toString() + boton7.getText().toString());
@@ -271,8 +273,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     } else {
                         pantalla.setText(pantalla.getText().toString() + boton8.getText().toString());
@@ -299,8 +301,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     } else {
                         pantalla.setText(pantalla.getText().toString() + boton9.getText().toString());
@@ -327,8 +329,8 @@ public class MainActivity extends AppCompatActivity {
                         pantalla.setText(pantalla.getText().toString() + boton0.getText().toString());
                         if(borrar_pantalla) {
                             ope1 = resultado;
+                            borrar_pantalla = false;
                         }
-                        borrar_pantalla = false;
                         seno_activado = false;
                     }
                     else {
@@ -448,18 +450,20 @@ public class MainActivity extends AppCompatActivity {
                     pantalla.setText("0.");
                 }
                 else {
-
                     if (iniciar_operacion) {
                         operation = "idle";
                         borrar_pantalla = false;
                         pantalla.setText("0.");
                         iniciar_operacion = false;
                     } else {
-                        if (borrar_pantalla) {
+                        if (borrar_pantalla || seno_activado) {
                             pantalla.setText("");
                             pantalla.setText("0,");
-                            ope1 = resultado;
-                            borrar_pantalla = false;
+                            if(borrar_pantalla) {
+                                ope1 = resultado;
+                                borrar_pantalla = false;
+                            }
+                            seno_activado = false;
                         } else {
                             pantalla.setText(pantalla.getText().toString() + ".");
                         }
@@ -474,6 +478,7 @@ public class MainActivity extends AppCompatActivity {
                 operation = "idle";
                 borrar_pantalla = false;
                 iniciar_operacion = false;
+                seno_activado = false;
                 pantalla.setText("");
             }
         });
