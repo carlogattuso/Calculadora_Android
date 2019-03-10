@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     boolean iniciar_operacion = false;
     boolean inicio = false;
     boolean seno_activado = false;
-    DecimalFormat decimales = new DecimalFormat("#.000");
+    DecimalFormat decimales = new DecimalFormat("#.###");
+    int pepe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -361,12 +362,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double seno = Math.sin(ang_radianes);
-                        pantalla.setText(String.format("%.3f",seno));
+                        pantalla.setText(decimales.format(resultado));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(String.format("%.3f",Math.sin(num)));
+                        pantalla.setText(decimales.format(resultado));
                         borrar_pantalla = true;
 
                     }
@@ -395,12 +396,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double coseno = Math.cos(ang_radianes);
-                        pantalla.setText(String.format("%.3f",coseno));
+                        pantalla.setText(decimales.format(resultado));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(String.format("%.3f",Math.cos(num)));
+                        pantalla.setText(decimales.format(resultado));
                         seno_activado = true;
 
                     }
@@ -429,12 +430,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double tangente = Math.tan(ang_radianes);
-                        pantalla.setText(String.format("%.3f",tangente));
+                        pantalla.setText(decimales.format(resultado));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(String.format("%.3f",Math.tan(num)));
+                        pantalla.setText(decimales.format(resultado));
                         seno_activado = true;
 
                     }
@@ -512,40 +513,40 @@ public class MainActivity extends AppCompatActivity {
                         if (!borrar_pantalla) {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 + ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             operation = "idle";
                         } else {
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                         }
                     } else if (operation == "producto") {
                         if (!borrar_pantalla) {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 * ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             operation = "idle";
                         } else {
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                         }
                     } else if (operation == "resta") {
                         if (!borrar_pantalla) {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 - ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             operation = "idle";
                         } else {
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                         }
                     } else if (operation == "division") {
                         if (!borrar_pantalla) {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 / ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             operation = "idle";
                         } else {
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                         }
                     } else {
-                        Toast toast1 = Toast.makeText(getApplicationContext(), "Faltan parámetros o ya has realizado una operacion. Realiza otra operacion para continuar",
+                        Toast toast1 = Toast.makeText(getApplicationContext(), "Ya has realizado una operacion. Realiza otra operacion para continuar",
                                 Toast.LENGTH_SHORT);
                         toast1.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
                         toast1.show();
@@ -574,25 +575,25 @@ public class MainActivity extends AppCompatActivity {
                         if (operation == "resta") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 - ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "suma";
                         } else if (operation == "producto") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 * ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "suma";
                         } else if (operation == "division") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 / ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "suma";
                         } else {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 + ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                         }
                     }
@@ -621,25 +622,25 @@ public class MainActivity extends AppCompatActivity {
                         if (operation == "suma") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 + ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "resta";
                         } else if (operation == "producto") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 * ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "resta";
                         } else if (operation == "division") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 / ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "resta";
                         } else {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 - ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                         }
                     }
@@ -667,25 +668,25 @@ public class MainActivity extends AppCompatActivity {
                         if (operation == "suma") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 + ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "producto";
                         } else if (operation == "resta") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 - ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "producto";
                         } else if (operation == "division") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 / ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "producto";
                         } else {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 * ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                         }
                     }
@@ -713,25 +714,25 @@ public class MainActivity extends AppCompatActivity {
                         if (operation == "suma") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 + ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "division";
                         } else if (operation == "resta") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 - ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "division";
                         } else if (operation == "producto") {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 * ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                             operation = "division";
                         } else {
                             ope2 = Double.parseDouble(pantalla.getText().toString());
                             resultado = ope1 / ope2;
-                            pantalla.setText(String.format("%.3f",resultado));
+                            pantalla.setText(decimales.format(resultado));
                             borrar_pantalla = true;
                         }
                     }
