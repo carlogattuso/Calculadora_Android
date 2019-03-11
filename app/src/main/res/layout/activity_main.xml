@@ -227,8 +227,8 @@
             <Button
                 android:id="@+id/boton_division"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="89dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/button_rounded_operations"
                 android:text="@string/division"
                 android:textColor="@android:color/white"

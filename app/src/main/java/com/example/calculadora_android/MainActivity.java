@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     boolean inicio = false;
     boolean seno_activado = false;
     DecimalFormat decimales = new DecimalFormat("#.###");
-    int pepe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -362,12 +361,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double seno = Math.sin(ang_radianes);
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(seno));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(Math.sin(num)));
                         borrar_pantalla = true;
 
                     }
@@ -396,12 +395,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double coseno = Math.cos(ang_radianes);
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(coseno));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(Math.cos(num)));
                         seno_activado = true;
 
                     }
@@ -430,12 +429,12 @@ public class MainActivity extends AppCompatActivity {
                         double num = Double.parseDouble(pantalla.getText().toString());
                         double ang_radianes = Math.toRadians(num);
                         double tangente = Math.tan(ang_radianes);
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(tangente));
                         seno_activado = true;
                     }
                     else{
                         double num = Double.parseDouble(pantalla.getText().toString());
-                        pantalla.setText(decimales.format(resultado));
+                        pantalla.setText(decimales.format(Math.tan(num)));
                         seno_activado = true;
 
                     }
